@@ -1,0 +1,228 @@
+validar que cuando se derive en cualqueir punto, sea un grupo de informes solo departamentos o distritos y provincias x
+
+actualziar modelo de documento_derivacion incluir fecha y numerodocumento x
+
+actualizar modelo de derivacion_renac agregar: idDerivacionOrigen idDerivacionDestino, idEspecialistaSsatdot x
+
+actualizar el modelo de informe_renac: agregar evaluacionfavorable x
+
+inhabilitar funciones en especialista SSIAT cuando es derivado x
+
+adjuntar un documento al derivar de ssiat a ssatdot con fecha y numero x
+
+
+sub ssatdot
+
+al derivar va sin documento y asigna especialista x
+
+
+
+La lista de informes a derivar, debe contener únicamente circunscripciones de tipo departamento,
+ o exclusivamente de tipo provincia y/o distrito.	x
+
+
+
+14/08/23
+
+Subsecretario ssiat 
+
+sub ssiat a ssatdot tittulo q se llame "derivar docuemnto" y agregar tipo de documento	 x
+en la derivacion de sub ssiat a sub ssatddot agregar combo tipo de documento	x
+requiere ajustes en sub ssatdot tiene q validar q el proceso haya sido retornado x esp ssatdot	x
+
+
+
+Especialista Ssatdot
+
+--derivar a ssiat requiere ajustes
+
+--columna proyecto informe cambiar por validacion
+
+
+--el boton opinion favorable es masivo dede acciones "InformeOpinionFavorable" (pdf, o word) : 
+  fecha (no es obligatorio)
+  numero (no es obligatorio)
+  subir el documento (no es obligatorio)
+
+--editar si es o no es favorable el informe renac
+
+
+--al derivar, validar que haya marcado si es favorable o no  y que tenga su informe de opinion favorable subido
+-- al derivar subir documentos: solo el documento "proyecto documento"
+-- al derivar pasa a50 y a subsecretario ssatdot
+
+
+subsecretario ssatdot
+
+--cuando el informe regresa del especialista al sub ssatdot el estado es 50 y el titulo dbe ser "sin derivar"
+--la columna "informe digital" aqui es el informe de opion favorable  y su accion es de desacrgar el informe, solo si lo tiene
+
+-- la opcion de subir ibforme de opinion favorable, puede hacerlo sobre uno q ya tierne
+--el boton opinion favorable es masivo dede acciones "InformeOpinionFavorable" (pdf, o word) : 
+  fecha (no es obligatorio)
+  numero (no es obligatorio)
+  subir el documento (no es obligatorio)
+
+--al subir el informe de opinion favorable lanzar una advertencia q indica que se va a reemplazar
+
+
+
+--el boton actual que se llame delegar en vez de derivar
+--la segunda accion se llamara derivar
+
+
+
+
+
+
+
+--subsecretario ssiat : derivacion ssatdot- anotacion
+
+
+--SUBSECRETARIO SSATDOT: asignar especialista - derivar
+
+--espoecialistassiat: registrar informes - generar formatos
+
+
+25/08/23
+
+repsonsablke archivo
+- subir oficio a GORE en acciones
+- subir solicitud de informacion a GORE
+- no permite ni registrar ni editar solicitud de infomacion a los informes ya derivados
+- Especialista SSIAT - Gnerar formatos / Respuesta Gore
+
+- PRIMERA OPCION : Registro informe SSIAT
+- SEGUNDA OPCION: Gnerar formatos / Respuesta Gore
+
+- respuesta gore: documento, fecha y numero
+- para los dias de transcurridos de solicitud tomar la fecha de evidencia de solicitud x
+
+
+Gnerar formatos / Respuesta Gore:
+
+ - Número,	Circunscripcion,	E. Favorable	,Documentos,	Estado derivacion, Dias transcurridos, generar constancia, subir constancia, 
+ - generar por informe (1x1) los formatos: "constancia de anotacion" en word
+ - por cada informe subir la "constancia de anotacion"
+ - que los dias transcurridos que no aparezcan para los q vienen de sub ssatdot, ni tampoco que puedan subir respuesta GORE
+- respuesta gore es registro masivo
+- en acciones "Modificar informe inicial" y retorna a la primera bandeja del esp ssiat
+
+
+
+--RESPONSABLE DE ARCHIVO
+
+- LA DERIVACION NO ADJUNTA NINGUN DOCUMENTO, REGISTRA LA DERIVACION, PERO VALIDA SI ADJUNTO LOS DOCUEMNTOS DE SOLICITUD
+
+
+- SSIAT - REGISTRO DOCUMENTOS
+
+-columna 'solictud GORE' apoarece descargar solo si tiene el documento
+-el icono de edit abre un modal para rehistrar documento GORE: numero, fecha y adjuntar documento
+- accion que se llame 'modificar informe SSIAT' y lo deriva a la primera bandeja  (se registra la derivacion sin nada)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+06/09/23
+
+
+
+RESPONSABLE DE ARCHIVO  / responsablearchivosolicitud
+
+- AL DERIVAR NO SE ADJUNTA NADA, VALIDAR QUE HAYA REGISTRADO SOLICITUD DE INFORMACION x
+
+
+
+Especialista Ssiat / registroformatos (16,17)
+
+ 
+- EN LA LISTA DE INFROMES LOS QUE TIENEN FECHA DE EVICENDIA (LOS Q PROVINEN DE REP DE ARCHIVO) TIENEN DIAS TRASCURRIDOS 'FECHA EVIDENCIA SOLICTUD' LOS OTROS UN GUION X
+- SUBIR RESPUESTA GORE (desde acciones es masivo): Numero, Fecha, Documento (Oficio respuesta gore) internamente setear a True la resp gore - se guarda en la tabla INFORME_RENAC X
+- en la columna dias transcurridos, los q tienen dias transcurridos, aparecera con guion, una vez que tenga respuesta GORE X
+- agregar columna subir constancia, que abra un modal y adjunte la constancia en pdf o word , validar que le haya generado la constancia de anotacion X
+- mediante acciones "Retornar para modificacion" - lo devuelve a la primera bandeja mediante derivacion como devolucion X
+- derivar para anotacion (maisivo mediante acciones) (18) que va al subsecretario SSIAT - Adjuntar en la derivacion "Proyecto de informe" pdf o word x
+- cambiar titulo por 'generar constancia' y cambiar el icono por algo que refleje una configuracion X
+- TOOLTIP DIAS TRANSCURRIDOS 'Días transcurridos desde envío de solicitud de información complementaria al GORE.'
+
+
+
+
+
+11/09/23
+
+ESPECIALISTA SSIAT
+
+ - camnbair titulo de adjuntar documento al derivar de esp ssiat a sub ssiat adjuntar proyeto de informe x
+ - crear operacion de archivar, para los informes renac en la primera bandeja
+ - que el estado de los archivados se muestre en la columna "estado"
+ - validar que solo se pueda archivar cuando venga de registroinformes de especialista ssiat
+
+SUBSECRETARIO SSIAT (18)
+
+ - Mover la columna de descargar gore en documentos x
+ - Por cada informe, subir constancia de anotacion firmada digitalmente : Fecha (max fecha hoy) y documento "adjuntar constancia firmada digitalmente" x
+ - Derivar por Acciones, multiples informes: adjuntar informe(pdf), numero y fecha (max fecha hoy) - validar que se haya subido constancia fimrada digitalmente x
+ 
+
+REPSONSABLE ARCHIVO - SOLICITUD DE INFORMACION
+
+- El boton editar sea solo ver no permita editar x
+
+
+REPSONSABLE ARCHIVO - INFORME ANOTACION (19)
+
+ - considerar columnas oficio antocacion y evidencia anotacion x
+ - para oficio de anotacion, que sea subir oficio(pdf), numero y fecha (fecha actual maximo) x
+ - para evidencia subir imagen o pdf, y fecha (max fecha actual) x
+ - oficio anotacion y evidencia en un solo modal como el proceso anterior de resp archivo x
+ - En acciones tener opcion "cerrar proceso anotacion" (validar que tenga ofico anotacion y evidencia) x
+ - al cerrar la columna estado cambia a cerrado x
+ - Agregar columna bit: procesoAnotacionCerrado x
+
+
+
+CONSULTAS
+
+ - Partidas Registrales  Anotadas - considerar informes q tengan subida constancia firmada digitalmente (agrupar por circunscripcion)
+- cantidad de asientos es de informes renac q tienen constancia con  firma digital 
+ - agregar el tipo de circusncripcion en la lista de informes de consultas y que en vez q sea columnas distirto, depa y prv sea "SANTIAGO DE SURCO ( LIMA / LIMA METROPOLITANA )	"
+
+
+
+
+Documentación que sustenta la Anotación
+
+INFORMACION SSIAT
+-Informe de Anotación: es el primer informe q se registra en la priemra bandeja
+-Memorandum / Informe: el documento que se deriva desde la badeja del sub ssiat (subsecretariossiat)
+-Constancia de Anotación: es la constancia firmada digitalmente q nace en la 18
+-Respuesta gore
+
+INFORMACION SSATDOT
+-Informe Favorable: es el informe de opinion favorable
+-Informe/Memorandum: lo que sube en la bandeja "subsecretariossatdotderivacion" del sub ssatdot
+
+
+RESPONSABEL DE ARCHIVO
+- considerar los cuatro documentos
+
+- Descartar documewntacion PREVIA
+
+
+
+
+
+
